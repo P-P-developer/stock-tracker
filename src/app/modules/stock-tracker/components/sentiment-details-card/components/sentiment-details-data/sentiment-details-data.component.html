@@ -1,0 +1,41 @@
+<div
+  *ngIf="
+    insiderSentimentService.insiderSentiments$
+      | async as insiderSentimentsResult
+  "
+>
+  <div *ngFor="let insiderSentimentData of insiderSentimentsResult.data">
+    <p>
+      <b
+        >{{
+          monthHelperService.convertNumberToMonthName(
+            insiderSentimentData.month!
+          )
+        }}
+      </b>
+    </p>
+    <ng-template [ngIf]="!insiderSentimentData.change" [ngIfElse]="show">
+      <p>No data to display</p>
+    </ng-template>
+
+    <ng-template #show>
+      <p>
+        Change:
+        {{
+          numberHelperService.addPlusWhenNumberIsPositiv(
+            insiderSentimentData.change ?? 0
+          )
+        }}{{ insiderSentimentData.change | number : "1.2-2" }}
+      </p>
+      <p>MSPR: {{ insiderSentimentData.mspr | number : "1.2-2" }}</p>
+
+      <st-arrow [propertyToCheck]="insiderSentimentData.change ?? 0"></st-arrow>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template
+  [ngIf]="(insiderSentimentService.insiderSentiments$ | async) === undefined"
+>
+  <p>No sentiment data to show</p>
+</ng-template>

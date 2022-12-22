@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title-group>
+    <mat-card-title>{{ "stock tracker" | uppercase }}</mat-card-title>
+    <mat-card-subtitle>{{
+      "Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)"
+    }}</mat-card-subtitle>
+  </mat-card-title-group>
+  <st-stock-form-field
+    (stockSymbolFormControlChange)="receiveFormControl($event)"
+  ></st-stock-form-field>
+  <st-stock-track-button
+    [onIsInValidStockSymbol]="
+      stockSymbolForm.value === undefined || stockSymbolForm.invalid
+    "
+    (searchButtonClick)="
+      this.stockService.searchStockByStockSymbol(stockSymbolForm.value!)
+    "
+  ></st-stock-track-button>
+</mat-card>

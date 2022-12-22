@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title
+    ><st-company-details
+      [CompanyStockDetails]="onCompanyStockDetails"
+    ></st-company-details
+  ></mat-card-title>
+
+  <ng-template [ngIf]="onCompanyQuote" [ngIfElse]="noDetailsToDisplay">
+    <st-company-quote-details
+      [companyQuote]="onCompanyQuote"
+    ></st-company-quote-details>
+  </ng-template>
+
+  <ng-template #noDetailsToDisplay>
+    <p>No stock details to show</p>
+  </ng-template>
+
+  <st-social-sentiment-details-button
+    [onStockSymbol]="onCompanyStockDetails.symbol"
+  ></st-social-sentiment-details-button>
+
+  <st-remove-search-result-card-button
+    [onStockSymbol]="onCompanyStockDetails.symbol"
+    (removeStockCardButtonClick)="removeStockCard()"
+  ></st-remove-search-result-card-button>
+</mat-card>

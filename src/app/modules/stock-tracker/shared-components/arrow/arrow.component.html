@@ -1,0 +1,7 @@
+<ng-template [ngIf]="propertyToCheck < 0" [ngIfElse]="greenArrow">
+  <mat-icon class="red">arrow_downward</mat-icon>
+</ng-template>
+
+<ng-template #greenArrow>
+  <mat-icon class="green">arrow_upward</mat-icon>
+</ng-template>

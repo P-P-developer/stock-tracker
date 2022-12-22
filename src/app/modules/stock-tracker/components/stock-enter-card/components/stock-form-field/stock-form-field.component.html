@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-label>Enter stock symbol</mat-label>
+  <input
+    id="stockInput"
+    type="text"
+    matInput
+    [formControl]="stockSymbolFormControl"
+  />
+  <mat-error *ngIf="stockSymbolFormControl.invalid">{{
+    getErrorMessage()
+  }}</mat-error>
+</mat-form-field>

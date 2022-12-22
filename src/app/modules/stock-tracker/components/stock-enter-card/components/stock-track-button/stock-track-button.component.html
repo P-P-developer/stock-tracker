@@ -1,0 +1,8 @@
+<button
+  id="trackBtn"
+  [disabled]="onIsInValidStockSymbol || loaderService.isLoading"
+  (click)="saveStockSymbolToLocalStorage()"
+  mat-raised-button
+>
+  Track Stock
+</button>

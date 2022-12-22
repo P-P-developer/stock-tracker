@@ -1,0 +1,13 @@
+<p>
+  Change today:
+  {{ numberHelperService.addPlusWhenNumberIsPositiv(companyQuote.dp)
+  }}{{ companyQuote.dp | percent : "1.2-2" }}
+</p>
+<p>Current price: {{ companyQuote.c | currency : "USD" }}</p>
+<p>Opening price: {{ companyQuote.o | currency : "USD" }}</p>
+<p>
+  High price:
+  {{ companyQuote.h | currency : "USD" }}
+</p>
+
+<st-arrow [propertyToCheck]="companyQuote.dp"></st-arrow>
